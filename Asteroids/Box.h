@@ -1,9 +1,9 @@
 #pragma once
 #include "Entity.h"
 class Box : public Entity {
-private:
+protected:
 	double angle;
-	int size, a, b;
+	int size, a, b, rotationPivotX, rotationPivotY;
 	inline int rotateX(int x, int y, double cosTheta, double sinTheta) {
 		return x*cosTheta - y*sinTheta;
 	}
@@ -15,6 +15,9 @@ private:
 public:
 	Box(int x, int y, int size);
 	void addRotation(double angle);
+	void addRotation(double angle, int xPivot, int yPivot);
+	int getCentreX();
+	int getCentreY();
 	// Inherited via Entity
 	virtual void update() override;
 };

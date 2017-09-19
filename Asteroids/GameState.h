@@ -11,11 +11,12 @@ private:
 	int yPosDelta, xPosDelta;
 	const int pixelsPerMove = 5;
 	Box* box;
+	Box* head;
 
 public:
 	GameState();
 	~GameState();
-	std::vector<SDL_Point> getVectorPoints();
+	std::vector<std::vector<SDL_Point>> getVectorPoints();
 	void handleInput(const Uint8 * keystates);
 	void update();
 };

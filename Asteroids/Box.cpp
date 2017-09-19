@@ -5,20 +5,17 @@ void Box::doRotateFromInitial()
 	double cosResult = cos(angle*3.14159265 / 180);
 	double sinResult = sin(angle*3.14159265 / 180);
 
-	int xCentre = a + size / 2;
-	int yCentre = b + size / 2;
+	int x1 = rotateX(a - rotationPivotX, b - rotationPivotY, cosResult, sinResult) + rotationPivotX;
+	int y1 = rotateY(a - rotationPivotX, b - rotationPivotY, cosResult, sinResult) + rotationPivotY;
 
-	int x1 = rotateX(a - xCentre, b - yCentre, cosResult, sinResult) + xCentre;
-	int y1 = rotateY(a - xCentre, b - yCentre, cosResult, sinResult) + yCentre;
+	int x2 = rotateX(a - rotationPivotX, b + size - rotationPivotY, cosResult, sinResult) + rotationPivotX;
+	int y2 = rotateY(a - rotationPivotX, b + size - rotationPivotY, cosResult, sinResult) + rotationPivotY;
 
-	int x2 = rotateX(a - xCentre, b + size - yCentre, cosResult, sinResult) + xCentre;
-	int y2 = rotateY(a - xCentre, b + size - yCentre, cosResult, sinResult) + yCentre;
+	int x3 = rotateX(a + size - rotationPivotX, b + size - rotationPivotY, cosResult, sinResult) + rotationPivotX;
+	int y3 = rotateY(a + size - rotationPivotX, b + size - rotationPivotY, cosResult, sinResult) + rotationPivotY;
 
-	int x3 = rotateX(a + size - xCentre, b + size - yCentre, cosResult, sinResult) + xCentre;
-	int y3 = rotateY(a + size - xCentre, b + size - yCentre, cosResult, sinResult) + yCentre;
-
-	int x4 = rotateX(a + size - xCentre, b - yCentre, cosResult, sinResult) + xCentre;
-	int y4 = rotateY(a + size - xCentre, b - yCentre, cosResult, sinResult) + yCentre;
+	int x4 = rotateX(a + size - rotationPivotX, b - rotationPivotY, cosResult, sinResult) + rotationPivotX;
+	int y4 = rotateY(a + size - rotationPivotX, b - rotationPivotY, cosResult, sinResult) + rotationPivotY;
 
 	geometry.updateGeometry({ x1, y1 }, 0);
 	geometry.updateGeometry({ x2, y2 }, 1);
@@ -45,6 +42,25 @@ Box::Box(int x, int y, int size)
 void Box::addRotation(double angle)
 {
 	this->angle += angle;
+	rotationPivotX = getCentreX();
+	rotationPivotY = getCentreY();
+}
+
+void Box::addRotation(double angle, int xPivot, int yPivot)
+{
+	this->angle += angle;
+	rotationPivotX = xPivot;
+	rotationPivotY = yPivot;
+}
+
+int Box::getCentreX()
+{
+	return a + size / 2;
+}
+
+int Box::getCentreY()
+{
+	return b + size / 2;
 }
 
 void Box::update()
