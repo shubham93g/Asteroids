@@ -54,7 +54,8 @@ void GameEngine::draw(GameState &gameState)
 
 		//SDL_RenderDrawLine(renderer, 5, 5, 5, 100);
 
-		SDL_RenderDrawLines(renderer, gameState.getPoints(), gameState.getNumber());
+		std::vector<SDL_Point> points = gameState.getVectorPoints();
+		SDL_RenderDrawLines(renderer, points.data(), points.capacity());
 
 
 		// render window

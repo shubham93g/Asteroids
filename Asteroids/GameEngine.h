@@ -1,6 +1,7 @@
 #pragma once
 #include <SDL.h>
 #include "GameState.h"
+#include <vector>
 class GameEngine
 {
 private:
