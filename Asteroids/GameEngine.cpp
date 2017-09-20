@@ -19,7 +19,7 @@ GameEngine::~GameEngine()
 
 void GameEngine::init()
 {
-	//SDL_Delay(10);
+	SDL_Delay(0.1);
 }
 
 bool GameEngine::handleInputAndUpdate(GameState &gameState)
@@ -33,10 +33,10 @@ bool GameEngine::handleInputAndUpdate(GameState &gameState)
 		case SDL_KEYUP:
 			const Uint8 *keyState = SDL_GetKeyboardState(NULL);
 			gameState.handleInput(keyState);
-			gameState.update();
 			break;
 	}
 	
+	gameState.update();
 	return false;
 }
 

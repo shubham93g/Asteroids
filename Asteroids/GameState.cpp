@@ -5,6 +5,7 @@ GameState::GameState()
 	box = new Box(300, 200, 80);
 	head = new Box(338, 200, 5);
 	yPosDelta = 0;
+	angle = 0.0;
 }
 
 
@@ -18,6 +19,9 @@ std::vector<std::vector<SDL_Point>> GameState::getVectorPoints()
 	std::vector<std::vector<SDL_Point>> vectorPoints;
 	vectorPoints.push_back(box->getGeometry().getPointVector());
 	vectorPoints.push_back(head->getGeometry().getPointVector());
+	if (bullet) {
+		vectorPoints.push_back(bullet->getGeometry().getPointVector());
+	}
 	return vectorPoints;
 }
 
@@ -42,11 +46,17 @@ void GameState::handleInput(const Uint8 * keystates)
 	if (keystates[SDL_SCANCODE_D]) {
 		box->addRotation(5.0);
 		head->addRotation(5.0, box->getCentreX(), box->getCentreY());
+		angle += 5.0;
 	}
 
 	if (keystates[SDL_SCANCODE_A]) {
 		box->addRotation(-5.0);
 		head->addRotation(-5.0, box->getCentreX(), box->getCentreY());
+		angle -= +5.0;
+	}
+
+	if (keystates[SDL_SCANCODE_SPACE]) {
+		bullet = new Bullet(338, 200, 5, angle, box->getCentreX(), box->getCentreY());
 	}
 }
 
@@ -54,4 +64,7 @@ void GameState::update()
 {
 	box->update();
 	head->update();
+	if (bullet) {
+		bullet->update();
+	}
 }

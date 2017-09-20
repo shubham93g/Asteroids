@@ -1,10 +1,9 @@
-﻿  Box.cpp
+﻿  GameEngine.cpp
 c:\users\shubham\documents\git\asteroids\asteroids\box.h(8): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
 c:\users\shubham\documents\git\asteroids\asteroids\box.h(12): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
-  Generating Code...
-  Skipping... (no relevant changes detected)
-  main.cpp
-  GameState.cpp
-  GameEngine.cpp
+c:\users\shubham\documents\git\asteroids\asteroids\bullet.h(11): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
+c:\users\shubham\documents\git\asteroids\asteroids\bullet.h(15): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
+c:\users\shubham\documents\git\asteroids\asteroids\gameengine.cpp(22): warning C4244: 'argument': conversion from 'double' to 'Uint32', possible loss of data
+c:\users\shubham\documents\git\asteroids\asteroids\gameengine.cpp(59): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
   Asteroids.vcxproj -> C:\Users\Shubham\Documents\GIT\Asteroids\x64\Debug\Asteroids.exe
   Asteroids.vcxproj -> C:\Users\Shubham\Documents\GIT\Asteroids\x64\Debug\Asteroids.pdb (Partial PDB)
